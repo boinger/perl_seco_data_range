@@ -1,0 +1,7 @@
+#!/bin/sh
+
+perl Makefile.PL && make && make test && make install DESTDIR=$DESTDIR || exit 1
+
+find $DESTDIR -name perllocal.pod -type f -exec rm \{\} \;
+# create README file from POD doc
+pod2text lib/Seco/Data/Range.pm >README
